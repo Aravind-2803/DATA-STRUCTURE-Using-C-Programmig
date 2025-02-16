@@ -17,6 +17,14 @@ int sum(int n)
 	
 }
 
+int fibonacci(int n) 
+{
+    if (n <= 1)
+        return n;
+    else
+        return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
 
 int power(int b, int e) 
 {
@@ -57,6 +65,13 @@ int main()
 	            printf("   *   SUM  = %d \n", sum(number));
                 break;
             case 3:
+                 int n = 0;
+                 printf("Enter The Number Of Fibonacci Terms \n");
+                 scanf("%d",&n);
+                 printf("Fibonacci Sequence: ");
+                 for (int i = 0; i < n; i++)
+                     printf("%d, ", fibonacci(i));
+                printf("\n");     
                 break;
             case 4:
                 int base=0,exponent=0;
