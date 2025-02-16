@@ -114,7 +114,7 @@ int main()
                 printf("----> The GCD OF %d AND %d IS %d.\n", a, b, results);
                 break;
             case 7:
-                printf("PROGRAM ENDS .............");
+                printf("THANK YOU ..........");
                 return 0;
             default:
                 printf("INVALID CHOICE \n");
