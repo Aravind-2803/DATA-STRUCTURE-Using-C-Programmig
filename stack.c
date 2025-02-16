@@ -15,8 +15,11 @@ void display(int stack[],int *top)
 }
 
 
-void push(int stack[],int *top,int value)
+void push(int stack[],int *top)
 { 
+  int value=0;
+  printf("ENTER THE VALUE TO PUSH :");
+  scanf("%d",&value);
   if(*top==MAX-1)
   {
   	printf("stack is full \n");
@@ -62,7 +65,7 @@ void peak(int stack[],int *top)
 int main()
 {
 	int stack[MAX];
-	int choice=0,top=-1,value;
+	int choice=0,top=-1;
 	while(choice!=5)
 	{
 		printf("\n|-------------------------------------|\n");
@@ -79,9 +82,7 @@ int main()
 		switch(choice)
 		{
 			 case 1:
-			  printf("ENTER THE VALUE TO PUSH :");
-  			  scanf("%d",&value);
-			  push(stack,&top,value);
+			  push(stack,&top);
 			  break;
 	 		 case 2:
 			  pop(stack,&top);
