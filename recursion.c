@@ -10,10 +10,10 @@ int fact(int n)
 int sum(int n) 
 {
 	
-	if (n != 0)
-		return n + sum(n-1); 
+	if (n == 0)
+		return n; 
 	else
-		return n;
+		return n + sum(n-1);
 	
 }
 
@@ -28,10 +28,10 @@ int fibonacci(int n)
 
 int power(int b, int e) 
 {
-    if (e != 0)
-        return (b * power(b, e - 1));
-    else
+    if (e == 0)
         return 1;
+    else
+        return (b * power(b, e - 1));
 }
 
 
