@@ -21,9 +21,7 @@ void push(int stack[],int *top)
   printf("ENTER THE VALUE TO PUSH :");
   scanf("%d",&value);
   if(*top==MAX-1)
-  {
   	printf("stack is full \n");
-  }
   else
   { 	
   	stack[++(*top)]=value;
