@@ -56,9 +56,7 @@ void peak(int stack[],int *top)
 	if(*top==-1)
 		printf("STACK IS EMPTY");
 	else
-	{
 		printf("TOP IS %d",stack[*top]);
-	}
 }
 
 
