@@ -62,7 +62,7 @@ int main()
 {
 	int stack[MAX];
 	int choice=0,top=-1;
-	while(choice!=5)
+	while(1)
 	{
 		printf("\n|-------------------------------------|\n");
 		printf("|        MAIN MENU                    |\n");
@@ -91,7 +91,7 @@ int main()
 			  break;
 			 case 5:
 			  printf("THANK YOU.....");
-			  break;
+			  return 0;
 	 		default: 
 			printf("INVALID CHOICE");
 		}
