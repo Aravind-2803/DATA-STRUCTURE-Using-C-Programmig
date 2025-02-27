@@ -8,6 +8,7 @@ void insert(int queue[],int *front,int *rear)
     
     if(*rear==MAX-1)
         printf("overflow \n");
+        
     else {if(*front==-1 && *rear==-1)
         *front = *rear=0;
     else
@@ -37,9 +38,11 @@ void  display(int queue[], int front, int rear)
   int i;
   if(rear==-1 || front==-1)
     printf("empty queue \n");
-  else{
+  else
+  {
+    printf("\n The queue is ");
     for(i=front;i<=rear;i++)
-    printf("\n the queue is    %d",queue[i]);
+    printf("\t %d",queue[i]);
   }
 }
 
@@ -48,16 +51,13 @@ int main()
   int option,num;
   int queue[MAX],rear=-1,front=-1;
 
-  do {
+  while(1)
+  {
+  printf("\n-----------------------------------------");
+  printf("\n1.Insert\n2.Delete\n3.Display\n4.Exit\n");
 
-  printf("\n............the options are given below................");
-  printf("\n1.insert");
-  printf("\n2.delete");
-  printf("\n3.display");
-  printf("\n4.exit");
-
-   printf("\n enter your option");
-   scanf("\n%d",&option);
+   printf("Enter your option :  ");
+   scanf("%d",&option);
 
    switch(option)
    {
@@ -73,13 +73,14 @@ int main()
     display(queue, front, rear);
     break;
     
+    case 4:
+    printf("THANK YOU................\n");
+    return 0;
+    
     default:
         printf("invalid  so try again..........\n");
    }
 
   }
-  while(option !=4);
   return 0;
   }
-
-
