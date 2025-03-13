@@ -1,86 +1,123 @@
 #include<stdio.h>
 #define MAX 10
-void insert(int queue[],int *front,int *rear)
+int q[MAX];
+int r=-1,f=-1;
+int isempty()
 {
-    int num;
-    printf("enter the num to be inserted :");
-    scanf("%d",&num);
-    
-    if(*rear==MAX-1)
-        printf("overflow \n");
-        
-    else {if(*front==-1 && *rear==-1)
-        *front = *rear=0;
+    if(r==-1)
+        return 1;
     else
-    (*rear)++;
-    }
-    queue[*rear]=num;
-    printf("the num %d is inserted at the position %d \n ",queue[*rear],*rear);
+        return 0;
 }
-
-void delete(int queue[],int *front, int *rear)
+int isfull()
 {
-    int num;
-    if(*front==-1)
-        printf("underflow \n");
+    if((f==0 && r==MAX-1)||(r==f-1))
+        return 1;
+    else
+        return 0;
+}
+void enqueue(int val)
+{
+    if(isfull())
+    {
+        printf("QUEUE IS FULL");
+    }
     else
     {
-        printf("Deleted number : %d \n",queue[*front]);
-        if (*front== *rear)
-            *front = *rear=-1;
-        else
-        (*front)++;
+        if(r==-1)
+        r=f=0;
+    else if(r==MAX-1)
+
+        r=0;
+    else
+        r++;
+    
+     q[r]=val;
+         printf("ENQUEUED=%d",val);
     }
 }
-
-void  display(int queue[], int front, int rear)
+int dequeue()
 {
-  int i;
-  if(rear==-1 || front==-1)
-    printf("empty queue \n");
-  else
-  {
-    printf("\n The queue is ");
-    for(i=front;i<=rear;i++)
-    printf("\t %d",queue[i]);
-  }
+    int val;
+    if(isempty())
+    {
+        printf("THE QUEUE IS EMPTY");
+        return -1;
+    }
+    else
+    {
+        val=q[f];
+        if(f==r){
+           f=r=-1;
+           }
+         if(f==MAX-1)
+         {
+         f=0;
+         }
+        else{
+            f++;
+            }
+             return val;
+    }
+   
 }
-
+void display() {
+    if (isempty())
+        {
+        printf("Queue is Empty\n");
+        }
+    else
+        {
+        int i = f;
+        printf("Queue elements: ");
+        while (i != r)
+         {
+            printf("%d ", q[i]);
+            i = (i + 1) % MAX;
+        }
+        printf("%d\n", q[r]);
+    }
+}
 int main()
 {
-  int option,num;
-  int queue[MAX],rear=-1,front=-1;
+    int choice=0,val;
+    while(1)
+    {
+        printf("\n------------------------------------\n");
+        printf(" \n    MAIN MENU      ");
+        printf("\n------------------------------------");
+        printf(" \n    1.ENQUEUE      ");
+        printf(" \n    2.DEQUEUE      ");
+        printf(" \n    3.DISPLAY      ");
+        printf(" \n    4.EXIT         ");
+        printf("\n");
+        printf("------------------------------------\n");
+        printf("enter ur choice=");
+        scanf("%d",&choice);
+        printf("------------------------------------\n");
+        switch(choice)
+        {
+        case 1:
+            printf("ENTER THE VALUE TO ENQUEUE=");
+            scanf("%d",&val);
 
-  while(1)
-  {
-  printf("\n-----------------------------------------");
-  printf("\n1.Insert\n2.Delete\n3.Display\n4.Exit\n");
+            enqueue(val);
+            break;
+        case 2:
+            val= dequeue();
+            if(val!=-1)
+                printf("DEQUEUED=%d",val);
+            break;
+        case 3:
+           display();
+            break;
 
-   printf("Enter your option :  ");
-   scanf("%d",&option);
-
-   switch(option)
-   {
-    case 1:
-    insert(queue, &front, &rear);
-    break;
-
-    case 2:
-    delete(queue, &front, &rear);
-    break;
-
-    case 3:
-    display(queue, front, rear);
-    break;
-    
-    case 4:
-    printf("THANK YOU................\n");
-    return 0;
-    
-    default:
-        printf("invalid  so try again..........\n");
-   }
-
-  }
-  return 0;
-  }
+        case 4:
+            printf("THANKYOU.....");
+            return 0;
+        default:
+            printf("INVALID CHOICE");
+        }
+    }
+return 0;
+}
