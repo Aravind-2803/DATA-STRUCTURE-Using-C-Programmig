@@ -28,4 +28,5 @@ int main()
   insertionSort(data, size);
   printf("Sorted array in ascending order:\n");
   printArray(data, size);
+
 }
