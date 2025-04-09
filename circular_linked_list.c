@@ -231,10 +231,12 @@ int main()
                 search(ele, head);
                 break;
             case 9:
-                break;
+                printf("Thank You.....\n");
+                return 0;
             default:
                 printf("PLEASE ENTER A VALID OPTION !\n");
         }
-    } while (op != 9);
+    } while (1);
     return 0;
-}
+} 
+    
