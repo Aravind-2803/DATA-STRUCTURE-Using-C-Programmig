@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-
 #define MAX_SIZE 100
 
 int is_operand(char c) 
