@@ -76,7 +76,7 @@ int main()
 {
     struct Node* pq = NULL;
     int choice, data, priority;
-    do
+    while(1)
     {
         printf("\nPriority Queue Menu:\n");
         printf("1. Insert\n");
@@ -110,6 +110,6 @@ int main()
         default:
             printf("Invalid choice. Please try again.\n");
         }
-    } while (1);
+    } 
     return 0;
 }
