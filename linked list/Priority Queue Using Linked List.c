@@ -34,7 +34,7 @@ void insert(struct Node** head, int data, int priority)
         current->next = newNode;
     }
 }
-void deleteHighestPriority(struct Node** head)
+void delete(struct Node** head)
 {
     if (*head == NULL)
     {
@@ -80,7 +80,7 @@ int main()
     {
         printf("\nPriority Queue Menu:\n");
         printf("1. Insert\n");
-        printf("2. Delete Highest Priority\n");
+        printf("2. Delete \n");
         printf("3. Peek\n");
         printf("4. Display\n");
         printf("5. Exit\n");
@@ -96,7 +96,7 @@ int main()
             insert(&pq, data, priority);
             break;
         case 2:
-            deleteHighestPriority(&pq);
+            delete(&pq);
             break;
         case 3:
             peek(pq);
