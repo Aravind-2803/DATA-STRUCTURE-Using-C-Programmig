@@ -32,10 +32,10 @@ struct node* findmin(struct node* root)
         return NULL;
     else if (root ->left == NULL)
     {
-        return root ->data;
+        return root;
     }
     else 
-        return findmin(root ->data);
+        return findmin(root ->left);
 }
 struct node* findmax(struct node* root) 
 {
@@ -43,10 +43,10 @@ struct node* findmax(struct node* root)
         return NULL;
     else if (root ->right == NULL)
     {
-        return root ->data;
+        return root;
     }
     else 
-        return findmax(root ->data);
+        return findmax(root ->right);
 }
 struct node* deletenode(struct node* root, int data) 
 {
