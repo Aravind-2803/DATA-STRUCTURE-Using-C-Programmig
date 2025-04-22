@@ -102,20 +102,31 @@ int main()
         scanf("%d", &choice);
         switch (choice)
     {
-    case 1:
-        insertTask();
+        case 1:
+    
+            printf("******************************\n");
+            insertTask();
+            printf("******************************\n");
             break;
         case 2:
+            printf("******************************\n");
             displayTasks();
+            printf("******************************\n");
             break;
         case 3:
+            printf("******************************\n");
             completeTask();
+            printf("******************************\n");
             break;
         case 4:
+            printf("******************************\n");
             displayCompleted();
+            printf("******************************\n");
             break;
         case 5:
+            printf("******************************\n");
             displayPendingTasks();
+            printf("******************************\n");
             break;
         case 6:
             printf("Thank You..\n");
