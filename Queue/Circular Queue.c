@@ -1,106 +1,123 @@
-#include <stdio.h>
-#define MAX 3
-
-int isFull(char *queue, int front, int rear)
+#include<stdio.h>
+#define MAX 10
+int q[MAX];
+int r=-1,f=-1;
+int isempty()
 {
-  return ((front == rear + 1) || (rear == MAX - 1 && front == 0));
+    if(r==-1)
+        return 1;
+    else
+        return 0;
 }
-
-int isEmpty(char *queue, int front, int rear)
+int isfull()
 {
-  return front == -1;
+    if((f==0 && r==MAX-1)||(r==f-1))
+        return 1;
+    else
+        return 0;
 }
-
-void enqueue(char *queue, int *front, int *rear, char data)
+void enqueue(int val)
 {
-  if (isFull(queue, *front, *rear)) {
-    printf("Queue is Full\n");
-    return;
-  }
-  if (isEmpty(queue, *front, *rear)) (*rear) = (*front) = 0;
-  else if ((*rear) == MAX - 1) (*rear) = 0;
-  else (*rear)++;
-  queue[*rear] = data;
-}
+    if(isfull())
+    {
+        printf("QUEUE IS FULL");
+    }
+    else
+    {
+        if(r==-1)
+        r=f=0;
+    else if(r==MAX-1)
 
-char dequeue(char *queue, int *front, int *rear)
+        r=0;
+    else
+        r++;
+
+     q[r]=val;
+         printf("ENQUEUED=%d",val);
+    }
+}
+int dequeue()
 {
-  if (isEmpty(queue, *front, *rear)) {
-    printf("Queue is Empty\n");
-    return '\0';
-  }
-  char data = queue[*front];
-  if ((*front) == (*rear)) (*front) = (*rear) = -1;
-  else if ((*front) == MAX - 1) (*front) = 0;
-  else (*front)++;
-  return data;
-}
+    int val;
+    if(isempty())
+    {
+        printf("THE QUEUE IS EMPTY");
+        return -1;
+    }
+    else
+    {
+        val=q[f];
+        if(f==r){
+           f=r=-1;
+           }
+         if(f==MAX-1)
+         {
+         f=0;
+         }
+        else{
+            f++;
+            }
+             return val;
+    }
 
-char peek(char *queue, int front, int rear)
-{
-  if (isEmpty(queue, front, rear)) {
-    printf("Queue is Empty\n");
-    return '\0';
-  }
-  return queue[front];
 }
-
-void display(char *queue, int front, int rear)
-{
-  if (isEmpty(queue, front, rear)) {
-    printf("Queue is Empty\n");
-    return;
-  }
-  if (front <= rear) for (int i = front; i <= rear; i++) printf("%c ", queue[i]);
-  else {
-    for (int i = front; i < MAX; i++) printf("%c ", queue[i]);
-    for (int i = 0; i <= rear; i++) printf("%c ", queue[i]);
-  }
-  printf("\n");
+void display() {
+    if (isempty())
+        {
+        printf("Queue is Empty\n");
+        }
+    else
+        {
+        int i = f;
+        printf("Queue elements: ");
+        while (i != r)
+         {
+            printf("%d ", q[i]);
+            i = (i + 1) % MAX;
+        }
+        printf("%d\n", q[r]);
+    }
 }
-
 int main()
 {
-  int choice = 0, rear = -1, front = -1;
-  char data = '\0';
+    int choice=0,val;
+    while(1)
+    {
+        printf("\n------------------------------------\n");
+        printf(" \n    MAIN MENU      ");
+        printf("\n------------------------------------");
+        printf(" \n    1.ENQUEUE      ");
+        printf(" \n    2.DEQUEUE      ");
+        printf(" \n    3.DISPLAY      ");
+        printf(" \n    4.EXIT         ");
+        printf("\n");
+        printf("------------------------------------\n");
+        printf("enter ur choice=");
+        scanf("%d",&choice);
+        printf("------------------------------------\n");
+        switch(choice)
+        {
+        case 1:
+            printf("ENTER THE VALUE TO ENQUEUE=");
+            scanf("%d",&val);
 
-  char queue[MAX] = {};
+            enqueue(val);
+            break;
+        case 2:
+            val= dequeue();
+            if(val!=-1)
+                printf("DEQUEUED=%d",val);
+            break;
+        case 3:
+           display();
+            break;
 
-  while (choice != 5) {
-    printf("1. Enqueue\n2. Dequeue\n3. Peek\n4. Display\n5. Exit\nEnter Your Choice: ");
-    scanf("%i", &choice); printf("\n");
-
-    switch (choice) {
-      case 1:
-        printf("Enter Data: ");
-        do data = getchar(); while (data == '\n' || data == '\0');
-        enqueue(queue, &front, &rear, data);
-        break;
-
-      case 2:
-        data = dequeue(queue, &front, &rear);
-        if (data) printf("%c has been processed\n", data);
-        break;
-
-      case 3:
-        data = peek(queue, front, rear);
-        if (data) printf("%c is in the front\n", data);
-        break;
-
-      case 4:
-        display(queue, front, rear);
-        break;
-
-      case 5:
-        printf("Bye Bye!\n");
-        break;
-
-
-      default:
-        printf("Invalid Choice\n");
+        case 4:
+            printf("THANKYOU.....");
+            return 0;
+        default:
+            printf("INVALID CHOICE");
+        }
     }
-    printf("\n");
-  }
-
-  return 0;
-} 
+return 0;
+}
